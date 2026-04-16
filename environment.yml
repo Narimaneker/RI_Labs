@@ -1,0 +1,41 @@
+# ─────────────────────────────────────────────
+# IR Lab 5 – Conda Environment
+# Create : conda env create -f environment.yml
+# Activate: conda activate ir_lab5
+# Update  : conda env update -f environment.yml --prune
+# ─────────────────────────────────────────────
+
+name: ir_lab5
+
+channels:
+  - defaults
+  - conda-forge
+
+dependencies:
+  # ── Python ───────────────────────────────────
+  - python=3.11
+
+  # ── NLP / Preprocessing ──────────────────────
+  - nltk>=3.8
+
+  # ── Numerical / Scientific ───────────────────
+  - numpy>=1.26
+  - scipy>=1.12
+  - scikit-learn>=1.4
+
+  # ── Data handling ────────────────────────────
+  - pandas>=2.2
+
+  # ── Visualization ────────────────────────────
+  - matplotlib>=3.8
+  - seaborn>=0.13
+
+  # ── Pip-only packages ────────────────────────
+  - pip
+  - pip:
+    - streamlit>=1.33
+    # - PyQt6>=6.6        # uncomment if using PyQt instead of Streamlit
+
+    # ── Optional: Learning to Rank (bonus) ───────
+    # - xgboost>=2.0
+    # - lightgbm>=4.3
