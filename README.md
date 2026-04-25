@@ -119,11 +119,6 @@ RI/
 │   ├── compute_results.py           # Result computation
 │   └── results.json                 # Cached results
 │
-├── ltr/                             # Learning-to-Rank (optional)
-│   ├── feature_extractor.py
-│   ├── ltr_model.py
-│   └── train_eval.py
-│
 └── results/                         # Output directory
     ├── index_cache/                 # Serialized indices & matrices
     ├── plots/                       # Generated visualizations
