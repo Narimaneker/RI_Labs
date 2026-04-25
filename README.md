@@ -63,7 +63,6 @@ A comprehensive Python implementation of classical and modern information retrie
 RI/
 ├── main.py                          # Entry point for batch evaluation
 ├── config.py                        # Centralized configuration
-├── test.py                          # Unit tests
 ├── README.md                        # This file
 │
 ├── data/                            # MEDLINE collection
