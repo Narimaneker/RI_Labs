@@ -89,7 +89,7 @@ LM_SMOOTHING_LAMBDA  = 0.2         # Jelinek–Mercer: weight on collection mode
 LM_SMOOTHING_ADD     = 1           # Laplace (Add-k): k value
 # Dirichlet µ is computed as the average document length in the collection.
 # Set to None to trigger auto-computation at runtime; set an int to override.
-LM_DIRICHLET_MU      = None        # e.g. 2000 to hard-code
+LM_DIRICHLET_MU      = 0.3        
 
 # Log-domain computation for language models (prevents underflow)
 LM_LOG_DOMAIN = True
@@ -108,19 +108,21 @@ GAIN_QUERY_IDS = list(range(1, 11))
 GAIN_METRIC    = "ndcg@20"
 
 # P@K cutoffs
-PRECISION_AT_K = [5, 10]
+K = [5, 10]
 
 # DCG / nDCG cutoff
 DCG_CUTOFF  = 20
 NDCG_CUTOFF = 20
 
 # Standard recall levels for interpolated P-R curves
-INTERPOLATED_RECALL_LEVELS = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5,
+RECALL_LEVELS = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5,
                                0.6, 0.7, 0.8, 0.9, 1.0]
 
 # Number of results to retrieve per query (ranking depth)
 RETRIEVAL_CUTOFF = 1000
 
+TOP_K          = 10    # how many results to print
+SAMPLE_QUERIES = None  # set to e.g. [1,2,3] to test a subset quickly
 
 # ─────────────────────────────────────────────
 # Model registry

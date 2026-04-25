@@ -21,3 +21,16 @@ def parser_medline(filepath: str) -> dict[int, str]:
         if current_id is not None:
             docs[current_id] = ' '.join(current_text)
     return docs
+
+def parse_relevance(path: str) -> dict[int, list[int]]:
+    relevance = {}
+    with open(path, "r") as f:
+        for line in f:
+            line = line.strip().split()
+            if len(line) < 4:
+                continue
+            query_id = int(line[0])
+            doc_id = int(line[2])
+            relevance.setdefault(query_id, []).append(doc_id)
+        return relevance
+

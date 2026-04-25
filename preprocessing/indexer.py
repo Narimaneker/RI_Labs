@@ -29,7 +29,9 @@ class Indexer:
         self.terms = []            # ordered list of terms
         self.idf = {}              # {term: idf_value}    
 
-
+    def preprocess(self, text: str) -> list[str]:
+        return stem(remove_stopwords(tokenize(text)))
+    
     def build(self, docs: dict[int, str])-> None:
         self.doc_ids = list(docs.keys())
         self.doc_count = len(docs)
@@ -37,7 +39,7 @@ class Indexer:
 
         for doc_id, text in docs.items():
             #tokenize -> remove stopwords -> stemming
-            tokens = stem(remove_stopwords(tokenize(text)))
+            tokens = self.preprocess(text)
             self.doc_lengths[doc_id] = len(tokens)
             preprocessed[doc_id] = tokens
 
@@ -52,7 +54,7 @@ class Indexer:
         
         self.terms = list(self.vocab)
         self.term_index = {term: i for i, term in enumerate(self.terms)}
-        self.tfidf_matrix = np.zeros((self.doc_count, len(self.terms)))
+        self.tfidf_matrix = np.zeros((self.doc_count + 1, len(self.terms)))
 
         for term, doc_tf in self.inverted_index.items():
             doc_freq = len(doc_tf)
@@ -61,7 +63,7 @@ class Indexer:
 
             for doc_id, values in doc_tf.items():
                 row = self.doc_ids.index(doc_id)
-                score = tfidf(values["freq"], self.doc_lengths[doc_id], self.doc_count, doc_freq)
+                score = tfidf(values["freq"], self.doc_lengths[doc_id], self.doc_count, doc_freq) 
                 self.inverted_index[term][doc_id]["tfidf"] = score
                 self.tfidf_matrix[row][col] = score       
 
