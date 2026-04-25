@@ -121,8 +121,6 @@ RI/
 │
 └── results/                         # Output directory
     ├── index_cache/                 # Serialized indices & matrices
-    ├── plots/                       # Generated visualizations
-    └── rankings/                    # Query rankings
 ```
 
 ## Installation
