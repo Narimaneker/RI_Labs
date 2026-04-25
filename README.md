@@ -161,7 +161,7 @@ The project requires:
 - **SciPy** ≥1.12 (Scientific computing)
 - **scikit-learn** ≥1.4 (ML library, for LSI & metrics)
 - **Pandas** ≥2.2 (Data manipulation)
-- **Matplotlib** ≥3.8 (Visualization)
+- **plotly** ≥5.20 (Visualization)
 - **Streamlit** (Interactive UI)
 
 See `environment.yml` for exact versions.
